@@ -7,7 +7,7 @@ export default function Header() {
   const setIsNavOpen = useSetRecoilState(navAtom);
 
   return (
-    <header className="relative left-0 right-0 isolate flex items-center justify-between gap-5 px-2 py-3 shadow">
+    <header className="relative left-0 right-0 isolate flex items-center justify-between gap-5 bg-white px-2 py-3 shadow">
       <div className="flex gap-2">
         <button
           className="hover:cursor-pointer"
@@ -19,7 +19,7 @@ export default function Header() {
             viewBox="0 0 20 20"
             strokeWidth={2}
             stroke="currentColor"
-            className="size-6 lg:hidden hover:cursor-pointer"
+            className="size-6 hover:cursor-pointer lg:hidden"
           >
             <path
               strokeLinecap="round"

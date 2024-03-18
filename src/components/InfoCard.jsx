@@ -3,11 +3,12 @@ import { useRecoilValue } from "recoil";
 import { RevenueCardFamily } from "../store/atom";
 
 export function NextPayoutCard() {
-  const nextPayoutAmount = 2312.23;
-  const orderCount = 23;
+  const { amount, orderCount } = useRecoilValue(
+    RevenueCardFamily("Next Payout"),
+  );
 
   return (
-    <div className="bg-primary-100 hover:bg-primary-200 overflow-hidden rounded-lg text-white shadow-sm">
+    <div className="bg-secondary-100 hover:bg-secondary-200 flex-grow overflow-hidden rounded-lg text-white shadow-sm">
       <div className="flex items-center gap-1 px-4 pt-4">
         <p>Next Payout</p>
         <svg
@@ -25,17 +26,33 @@ export function NextPayoutCard() {
           />
         </svg>
       </div>
-      <div className="flex items-center justify-between px-4 py-3">
-        <p className="text-4xl font-semibold">
-          ₹{nextPayoutAmount.toLocaleString()}
-        </p>
+      <div className="flex items-center justify-between gap-2 px-4 py-3">
+        <p className="text-4xl font-semibold">₹{amount.toLocaleString()}</p>
         <div>
-          <p className="text-base font-semibold underline">
-            {orderCount} Orders
-          </p>
+          {orderCount && (
+            <>
+              <p className="inline text-base underline hover:cursor-pointer">
+                {orderCount} Orders
+              </p>
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                fill="none"
+                viewBox="0 0 24 24"
+                strokeWidth={2}
+                stroke="currentColor"
+                className="inline size-6"
+              >
+                <path
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  d="m8.25 4.5 7.5 7.5-7.5 7.5"
+                />
+              </svg>
+            </>
+          )}
         </div>
       </div>
-      <div className="bg-primary-200 flex items-center justify-between rounded-lg px-4 py-2">
+      <div className="bg-secondary-200 flex items-center justify-between gap-2 rounded-lg px-4 py-2">
         <p>Next Payment Date:</p>
         <p>Today, 4:00PM</p>
       </div>
@@ -47,7 +64,7 @@ export function RevenueCard({ cardTitle }) {
   const { amount, orderCount } = useRecoilValue(RevenueCardFamily(cardTitle));
 
   return (
-    <div className="bg-bg-100 overflow-hidden rounded-lg shadow-sm">
+    <div className="bg-white flex-grow overflow-hidden rounded-lg shadow-sm">
       <div className="flex items-center gap-1 px-4 pt-4">
         <p className="text-grey">{cardTitle}</p>
         <svg
@@ -65,12 +82,12 @@ export function RevenueCard({ cardTitle }) {
           />
         </svg>
       </div>
-      <div className="flex items-center justify-between px-4 py-3">
+      <div className="flex items-center justify-between gap-2 px-4 py-3">
         <p className="text-4xl font-semibold">₹{amount.toLocaleString()}</p>
         <div>
           {orderCount && (
             <>
-              <p className="text-primary-100 inline text-base font-medium underline">
+              <p className="inline text-base font-medium text-primary-100 underline hover:cursor-pointer">
                 {orderCount} Orders
               </p>
               <svg
@@ -79,7 +96,7 @@ export function RevenueCard({ cardTitle }) {
                 viewBox="0 0 24 24"
                 strokeWidth={2}
                 stroke="currentColor"
-                className="inline text-primary-100 size-6"
+                className="inline size-6 text-primary-100"
               >
                 <path
                   strokeLinecap="round"

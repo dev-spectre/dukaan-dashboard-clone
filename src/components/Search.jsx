@@ -9,7 +9,7 @@ export default function Search({ type, placeholder }) {
 
   return (
     <div
-      className={`inline-flex w-full max-w-64 items-center overflow-hidden rounded-md px-2 outline-1 outline-zinc-600 ${styleModifier}`}
+      className={`inline-flex w-full max-w-64 items-center overflow-hidden rounded-md px-2 text-grey outline-1 outline-zinc-600 ${styleModifier}`}
     >
       <svg
         xmlns="http://www.w3.org/2000/svg"

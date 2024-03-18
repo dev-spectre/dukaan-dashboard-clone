@@ -9,11 +9,11 @@ export default function Sidebar() {
       onClick={() => {
         setIsNavOpen(false);
       }}
-      className={`absolute z-10 inset-0 text-white/85 lg:bg-transparent pointer-events-none ${isNavOpen && "bg-[#1e2640]/45 pointer-events-auto"}`}
+      className={`pointer-events-none fixed inset-0 z-10 text-white/85 lg:bg-transparent ${isNavOpen && "pointer-events-auto bg-[#1e2640]/45"}`}
     >
       <aside
         onClickCapture={(e) => e.stopPropagation()}
-        className={`absolute flex h-[100dvh] w-56 flex-col justify-between bg-[#1e2640] px-5 py-4 lg:static ${isNavOpen || "-left-full"}`}
+        className={`absolute flex min-h-[100dvh] w-56 flex-col justify-between bg-[#1e2640] px-5 py-4 lg:static ${isNavOpen || "-left-full"}`}
       >
         <div>
           <div className="flex items-center gap-2">
